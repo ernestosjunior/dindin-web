@@ -1,3 +1,11 @@
+import { NextSeo } from 'next-seo'
+import { BaseLayout } from '../components'
+
 export default function Home() {
-  return <h1>Home</h1>
+  return (
+    <BaseLayout>
+      <NextSeo title="Dindin" openGraph={{ title: 'Dindin' }} />
+      <h1>Home</h1>
+    </BaseLayout>
+  )
 }

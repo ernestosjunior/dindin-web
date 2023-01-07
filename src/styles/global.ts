@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: 'Lato', sans-serif;
+    background-image: linear-gradient(90.23deg, #05ede3 0.02%, #645ffb 99.63%);
   }
   
   a {
