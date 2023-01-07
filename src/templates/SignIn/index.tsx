@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { NextSeo } from 'next-seo'
 import { BaseLayout, Modal, Input } from '../../components'
 import * as S from './styles'
+import { handleSignIn } from '../../services/api'
+import { useRouter } from 'next/router'
 
 const initialState = { email: '', password: '' }
 
@@ -12,6 +14,8 @@ export const SignInTemplate = () => {
     const { name, value } = e.target
     setForm({ ...form, [name]: value })
   }
+
+  const router = useRouter()
 
   return (
     <BaseLayout>
@@ -27,7 +31,12 @@ export const SignInTemplate = () => {
               type="password"
             />
           </div>
-          <button>Entrar</button>
+          <button
+            onClick={() => handleSignIn(form, router)}
+            disabled={!form.email || !form.password}
+          >
+            Entrar
+          </button>
         </S.Container>
       </Modal>
     </BaseLayout>
