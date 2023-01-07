@@ -4,7 +4,10 @@ import { SignUpTemplate } from '../templates'
 export default function SignUp() {
   return (
     <>
-      <NextSeo title="Dindin" openGraph={{ title: 'Dindin' }} />
+      <NextSeo
+        title="Dindin | Cadastro"
+        openGraph={{ title: 'Dindin | Cadastro' }}
+      />
       <SignUpTemplate />
     </>
   )

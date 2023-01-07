@@ -3,9 +3,9 @@ import { NextSeo } from 'next-seo'
 import { BaseLayout, Modal, Input } from '../../components'
 import * as S from './styles'
 
-const initialState = { name: '', email: '', password: '' }
+const initialState = { email: '', password: '' }
 
-export const SignUpTemplate = () => {
+export const SignInTemplate = () => {
   const [form, setForm] = useState(initialState)
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,13 +17,17 @@ export const SignUpTemplate = () => {
     <BaseLayout>
       <Modal visible hasCloseButton={false} preventClose blur>
         <S.Container>
-          <h1>Cadastro</h1>
+          <h1>Login</h1>
           <div className="form">
-            <Input label="Nome" onChange={onChange} name="name" />
             <Input label="Email" onChange={onChange} name="email" />
-            <Input label="Senha" onChange={onChange} name="password" />
+            <Input
+              label="Senha"
+              onChange={onChange}
+              name="password"
+              type="password"
+            />
           </div>
-          <button>Cadastrar</button>
+          <button>Entrar</button>
         </S.Container>
       </Modal>
     </BaseLayout>
