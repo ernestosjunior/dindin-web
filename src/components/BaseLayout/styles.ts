@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const BaseLayout = styled.main`
   width: 100%;
-  height: 100%;
+  height: 100vh;
 
   .logo {
     margin: 32px 0 32px 100px;
