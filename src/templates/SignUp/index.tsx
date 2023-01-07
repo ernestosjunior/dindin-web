@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { NextSeo } from 'next-seo'
 import { BaseLayout, Modal, Input } from '../../components'
+import { handleSignUp } from '../../services/api'
 import * as S from './styles'
 
 const initialState = { name: '', email: '', password: '' }
@@ -23,7 +23,12 @@ export const SignUpTemplate = () => {
             <Input label="Email" onChange={onChange} name="email" />
             <Input label="Senha" onChange={onChange} name="password" />
           </div>
-          <button>Cadastrar</button>
+          <button
+            onClick={() => handleSignUp(form)}
+            disabled={!form.email || !form.password || !form.name}
+          >
+            Cadastrar
+          </button>
         </S.Container>
       </Modal>
     </BaseLayout>
