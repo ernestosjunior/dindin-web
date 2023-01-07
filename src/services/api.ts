@@ -3,7 +3,7 @@ import { SignUpBody, SignInBody } from './types'
 import { toast } from 'react-toastify'
 
 export const api = axios.create({
-  baseURL: process.env.API_BASE_URL,
+  baseURL: 'http://ec2-3-86-114-110.compute-1.amazonaws.com',
 })
 
 export const handleSignUp = async (signUpBody: SignUpBody) => {
