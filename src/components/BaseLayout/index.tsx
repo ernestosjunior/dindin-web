@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import logo from '../../assets/logo-long.svg'
-import * as S from './styles'
+import styles from './styles.module.css'
 
 export interface BaseLayoutProps {
   children: React.ReactNode
@@ -9,9 +9,9 @@ export interface BaseLayoutProps {
 
 export const BaseLayout = ({ children }: BaseLayoutProps) => {
   return (
-    <S.BaseLayout>
-      <Image src={logo} alt="Dindin logo" className="logo" />
-      <S.Container>{children}</S.Container>
-    </S.BaseLayout>
+    <main className={styles.baseLayout}>
+      <Image src={logo} alt="Dindin logo" className={styles.logo} />
+      <section className={styles.container}>{children}</section>
+    </main>
   )
 }

@@ -1,7 +1,6 @@
 import { useState } from 'react'
-import { NextSeo } from 'next-seo'
 import { BaseLayout, Modal, Input } from '../../components'
-import * as S from './styles'
+import styles from './styles.module.css'
 import { handleSignIn } from '../../services/api'
 import { useRouter } from 'next/router'
 
@@ -20,9 +19,9 @@ export const SignInTemplate = () => {
   return (
     <BaseLayout>
       <Modal visible hasCloseButton={false} preventClose blur>
-        <S.Container>
-          <h1>Login</h1>
-          <div className="form">
+        <section className={styles.container}>
+          <h1 className={styles.title}>Login</h1>
+          <div className={styles.form}>
             <Input label="Email" onChange={onChange} name="email" />
             <Input
               label="Senha"
@@ -37,7 +36,7 @@ export const SignInTemplate = () => {
           >
             Entrar
           </button>
-        </S.Container>
+        </section>
       </Modal>
     </BaseLayout>
   )

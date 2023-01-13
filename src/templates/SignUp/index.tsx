@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { BaseLayout, Modal, Input } from '../../components'
 import { handleSignUp } from '../../services/api'
-import * as S from './styles'
+import styles from './styles.module.css'
 
 const initialState = { name: '', email: '', password: '' }
 
@@ -16,9 +16,9 @@ export const SignUpTemplate = () => {
   return (
     <BaseLayout>
       <Modal visible hasCloseButton={false} preventClose blur>
-        <S.Container>
-          <h1>Cadastro</h1>
-          <div className="form">
+        <section className={styles.container}>
+          <h1 className={styles.title}>Cadastro</h1>
+          <div className={styles.form}>
             <Input label="Nome" onChange={onChange} name="name" />
             <Input label="Email" onChange={onChange} name="email" />
             <Input label="Senha" onChange={onChange} name="password" />
@@ -29,7 +29,7 @@ export const SignUpTemplate = () => {
           >
             Cadastrar
           </button>
-        </S.Container>
+        </section>
       </Modal>
     </BaseLayout>
   )
