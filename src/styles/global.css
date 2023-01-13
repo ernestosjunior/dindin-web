@@ -1,4 +1,5 @@
 @import './reset.css';
+@import './variables.css';
 
 * {
   margin: 0;
