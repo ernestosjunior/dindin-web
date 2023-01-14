@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { BaseLayout, Modal, Input } from '../../components'
 import styles from './styles.module.css'
 import { useRoot } from '../../hooks/useRoot'
+import Link from 'next/link'
 
 const initialState = { email: '', password: '' }
 
@@ -34,6 +35,9 @@ export const SignInTemplate = () => {
           >
             Entrar
           </button>
+          <Link className={styles.redirectButton} href="/signup">
+            Cadastre-se
+          </Link>
         </section>
       </Modal>
     </BaseLayout>

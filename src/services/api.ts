@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify'
 import axios from 'axios'
 import { SignUpBody, SignInBody } from './types'
 import { parseCookies } from 'nookies'
@@ -27,6 +28,7 @@ export const recoverUserInformation = async () => {
 
 export const handleSignUp = async (signUpBody: SignUpBody) => {
   const { data } = await api.post('/users', signUpBody)
+  if (!data) return toast.error('Erro ao efetuar cadastro. Tente novamente!')
   return data
 }
 

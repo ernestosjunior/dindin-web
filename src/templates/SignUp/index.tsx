@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { BaseLayout, Modal, Input } from '../../components'
 import { handleSignUp } from '../../services/api'
+import Router from 'next/router'
 import styles from './styles.module.css'
+import Link from 'next/link'
 
 const initialState = { name: '', email: '', password: '' }
 
@@ -24,11 +26,17 @@ export const SignUpTemplate = () => {
             <Input label="Senha" onChange={onChange} name="password" />
           </div>
           <button
-            onClick={() => handleSignUp(form)}
+            onClick={() => {
+              handleSignUp(form)
+              Router.push('/signin')
+            }}
             disabled={!form.email || !form.password || !form.name}
           >
             Cadastrar
           </button>
+          <Link className={styles.redirectButton} href="/signin">
+            Login
+          </Link>
         </section>
       </Modal>
     </BaseLayout>

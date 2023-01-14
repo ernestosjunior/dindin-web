@@ -39,3 +39,13 @@
   flex-direction: column;
   gap: 26px;
 }
+
+.redirectButton {
+  color: #645ffb;
+  font-size: 14px;
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 700;
+  align-self: center;
+  margin-top: 35px;
+}
