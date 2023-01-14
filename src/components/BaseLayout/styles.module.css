@@ -3,12 +3,22 @@
   height: 100vh;
 }
 
-.logo {
-  margin: 32px 0 32px 100px;
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 6% 32px 6%;
+}
+
+.header > button {
+  all: unset;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 18px;
 }
 
 .container {
-  padding: 2% 4%;
+  padding: 55px 6% 20px 6%;
   height: 100%;
   background: #ffffff;
   border-top-left-radius: 24px;

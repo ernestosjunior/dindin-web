@@ -1,0 +1,27 @@
+.homeTemplate {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.btnFilter {
+  all: unset;
+  background: #fafafa;
+  box-shadow: 0px 2px 11px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 14px;
+  width: 80px;
+  height: 30px;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.btnFilter > p {
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 700;
+  color: #000000;
+}

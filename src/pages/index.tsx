@@ -1,21 +1,18 @@
 import { NextSeo } from 'next-seo'
-import { BaseLayout, TableRelease } from '../components'
-import { getAPIClient, getReleases } from '../services/api'
+import { getAPIClient } from '../services/api'
 import { GetServerSideProps } from 'next'
 import { parseCookies } from 'nookies'
+import { HomeTemplate } from '../templates'
 
-interface HomeProps {
+export interface HomeProps {
   releases: any
 }
 
-export default function Home({ releases }: HomeProps) {
+export default function Home(props: HomeProps) {
   return (
     <>
       <NextSeo title="Dindin" openGraph={{ title: 'Dindin' }} />
-      <BaseLayout>
-        <h1>Home</h1>
-        <TableRelease releases={releases} />
-      </BaseLayout>
+      <HomeTemplate {...props} />
     </>
   )
 }
