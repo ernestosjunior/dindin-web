@@ -1,20 +1,41 @@
 import axios from 'axios'
 import { SignUpBody, SignInBody } from './types'
-import { toast } from 'react-toastify'
+import { parseCookies } from 'nookies'
 
 export const api = axios.create({
-  baseURL: 'http://ec2-3-86-114-110.compute-1.amazonaws.com',
+  baseURL: 'http://localhost:3333',
 })
+
+export function getAPIClient(ctx?: any) {
+  const { ['nextAuth.token']: token } = parseCookies(ctx)
+
+  api.interceptors.request.use((config) => {
+    return config
+  })
+
+  if (token) {
+    api.defaults.headers['Authorization'] = `Bearer ${token}`
+  }
+
+  return api
+}
+
+export const recoverUserInformation = async () => {
+  const { data } = await getAPIClient().get('/users')
+  return data
+}
 
 export const handleSignUp = async (signUpBody: SignUpBody) => {
   const { data } = await api.post('/users', signUpBody)
   return data
 }
 
-export const handleSignIn = async (signInBody: SignInBody, router: any) => {
+export const signInRequest = async (signInBody: SignInBody) => {
   const { data } = await api.post('/auth', signInBody)
-  if (!data) return toast.error('Credenciais inválidas.')
-  typeof window !== 'undefined' && window.localStorage.setItem('token', data)
-  router.push('/')
+  return data
+}
+
+export const getReleases = async () => {
+  const { data } = await api.get('/release')
   return data
 }

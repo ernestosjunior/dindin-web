@@ -1,8 +1,13 @@
-import React, { createContext, useState, Dispatch, SetStateAction } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
+import { SignInBody } from '../services/types'
+import { signInRequest, recoverUserInformation } from '../services/api'
+import { setCookie, parseCookies } from 'nookies'
+import { toast } from 'react-toastify'
+import Router from 'next/router'
 
 type RootContextProps = {
-  token: string | null
-  setToken: Dispatch<SetStateAction<string | null>>
+  isAuthenticated: boolean
+  signIn: (user: SignInBody) => void
 }
 type RootProviderProps = { children: React.ReactNode }
 
@@ -11,13 +16,35 @@ export const RootContext = createContext<RootContextProps>(
 )
 
 export const RootProvider = ({ children }: RootProviderProps) => {
-  const tokenStorage =
-    typeof window !== 'undefined' ? window.localStorage.getItem('token') : null
+  const [user, setUser] = useState<any>(null)
+  const isAuthenticated = !!user
 
-  const [token, setToken] = useState<string | null>(tokenStorage)
+  useEffect(() => {
+    const { ['nextAuth.token']: token } = parseCookies()
+
+    if (token) {
+      recoverUserInformation().then((response) => {
+        setUser({ user: response, token })
+      })
+    }
+  }, [])
+
+  const signIn = async (signInBody: SignInBody) => {
+    const res = await signInRequest(signInBody)
+
+    if (!res) return toast.error('Erro ao entrar. Tente novamente!')
+
+    setCookie(null, 'nextAuth.token', res.token, {
+      maxAge: 60 * 60 * 8 /* Validade de 8 horas */,
+    })
+
+    setUser(res.user)
+
+    Router.push('/')
+  }
 
   return (
-    <RootContext.Provider value={{ token, setToken }}>
+    <RootContext.Provider value={{ isAuthenticated, signIn }}>
       {children}
     </RootContext.Provider>
   )

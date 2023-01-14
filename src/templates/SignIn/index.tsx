@@ -1,20 +1,18 @@
 import { useState } from 'react'
 import { BaseLayout, Modal, Input } from '../../components'
 import styles from './styles.module.css'
-import { handleSignIn } from '../../services/api'
-import { useRouter } from 'next/router'
+import { useRoot } from '../../hooks/useRoot'
 
 const initialState = { email: '', password: '' }
 
 export const SignInTemplate = () => {
+  const { signIn } = useRoot()
   const [form, setForm] = useState(initialState)
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setForm({ ...form, [name]: value })
   }
-
-  const router = useRouter()
 
   return (
     <BaseLayout>
@@ -31,7 +29,7 @@ export const SignInTemplate = () => {
             />
           </div>
           <button
-            onClick={() => handleSignIn(form, router)}
+            onClick={() => signIn(form)}
             disabled={!form.email || !form.password}
           >
             Entrar
