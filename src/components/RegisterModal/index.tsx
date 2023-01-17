@@ -1,6 +1,7 @@
 import React from 'react'
 import { Modal } from '../Modal'
 import { Input } from '../Input'
+import { Button } from '../Button'
 import styles from './styles.module.css'
 
 interface RegisterModalProps {
@@ -74,13 +75,7 @@ export const RegisterModal = ({
             <Input key={props.name} {...props} onChange={onChange} />
           ))}
         </div>
-        <button
-          className={styles.confirmButton}
-          onClick={onSubmit}
-          disabled={loading}
-        >
-          Confirmar
-        </button>
+        <Button isLoading={loading} label="Confirmar" onClick={onSubmit} />
       </section>
     </Modal>
   )

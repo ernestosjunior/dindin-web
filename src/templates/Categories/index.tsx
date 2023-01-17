@@ -17,7 +17,7 @@ export function CategoriesTemplate({
 }: CategoriesTemplateProps) {
   const [form, setForm] = useState('')
   const [visible, setVisible] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
   const { isAuthenticated, user, setContainer } = useRoot()
 
   const handleSubmit = () => {
