@@ -1,3 +1,4 @@
+import { generateDate } from './../utils/generateDate'
 import { toast } from 'react-toastify'
 import axios from 'axios'
 import { SignUpBody, SignInBody } from './types'
@@ -44,6 +45,17 @@ export const getReleases = async () => {
 
 export const createCategory = async (createCategoryBody: any) => {
   const { data } = await api.post('/category', createCategoryBody)
+  if (!data) return toast.error('Erro ao cadastrar categoria. Tente novamente!')
+  return data
+}
+
+export const createRelease = async (createReleaseBody: any) => {
+  const form = {
+    ...createReleaseBody,
+  }
+  form.categoryId = createReleaseBody.category
+  form.date = generateDate(createReleaseBody.date)
+  const { data } = await api.post('/release', form)
   if (!data) return toast.error('Erro ao cadastrar categoria. Tente novamente!')
   return data
 }

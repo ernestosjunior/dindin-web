@@ -12,6 +12,7 @@ import styles from './styles.module.css'
 import { HomeProps } from '../../pages'
 import { useRoot } from '../../hooks/useRoot'
 import { initialValue } from '../../utils/initialValueForm'
+import { createRelease } from '../../services/api'
 
 interface HomeTemplateProps extends HomeProps {}
 
@@ -22,13 +23,28 @@ export function HomeTemplate({
 }: HomeTemplateProps) {
   const [form, setForm] = useState(initialValue)
   const [visible, setVisible] = useState(false)
+  const [loading, setLoading] = useState(false)
   const { isAuthenticated, setContainer } = useRoot()
 
   const options = categories?.map((category: any) => ({
     option: category.title,
     value: category.id,
   }))
+
   const optionsSelect = [{ option: 'Selecione', value: '' }, ...options]
+
+  const handleCreateRelease = async () => {
+    try {
+      setLoading(true)
+      const newRelease = await createRelease(form)
+      setReleases((prev: any) => [...prev, newRelease])
+      setVisible(false)
+    } catch (error) {
+    } finally {
+      setForm(initialValue)
+      setLoading(false)
+    }
+  }
 
   const inputs = [
     {
@@ -78,6 +94,9 @@ export function HomeTemplate({
         inputs={inputs}
         registerType={form.type}
         onChangeType={(value) => setForm((prev) => ({ ...prev, type: value }))}
+        loading={loading}
+        disabledButton={Object.values(form).some((value) => !value)}
+        onSubmit={handleCreateRelease}
       />
       <BaseLayout hasLogoutButton={isAuthenticated}>
         <section className={styles.homeTemplate}>
