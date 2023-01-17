@@ -1,7 +1,7 @@
 import styles from './styles.module.css'
 import { ThreeDots } from 'react-loader-spinner'
 
-export interface ButtonProps {
+export interface ButtonProps extends Partial<HTMLButtonElement> {
   isLoading?: boolean
   label: string
   onClick: any

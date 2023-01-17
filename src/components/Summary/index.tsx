@@ -1,7 +1,8 @@
 import styles from './styles.module.css'
+import { ReleaseProps } from '../../types'
 
 interface SummaryProps {
-  releases: any[]
+  releases: ReleaseProps[]
 }
 
 export const Summary = ({ releases = [] }: SummaryProps) => {
