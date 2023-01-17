@@ -54,7 +54,11 @@ export const TableRelease = ({ releases = [] }: any) => {
         return (
           <Col>
             <Row>
-              <Text b size={14} css={{ tt: 'capitalize', ...baseCss }}>
+              <Text
+                b
+                size={14}
+                css={{ tt: 'capitalize', ...baseCss, fontWeight: 700 }}
+              >
                 {formatedDate}
               </Text>
             </Row>
@@ -108,7 +112,7 @@ export const TableRelease = ({ releases = [] }: any) => {
                   fontWeight: 700,
                 }}
               >
-                {releases.value.toLocaleString('pt-BR', {
+                {releases.value?.toLocaleString('pt-BR', {
                   style: 'currency',
                   currency: 'BRL',
                 })}

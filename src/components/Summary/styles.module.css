@@ -1,0 +1,67 @@
+.summary {
+  background: #fafafa;
+  box-shadow: 0px 2px 11px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 24px 32px;
+  min-width: 236px;
+}
+
+.summary > h1 {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  color: #2f2f2f;
+  margin: 0 0 23px 0;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  margin-bottom: 17px;
+}
+
+.valueCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.valueCard:last-child {
+  margin-top: 16px;
+}
+
+.label,
+.entranceLabel,
+.exitLabel {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  color: #2f2f2f;
+}
+
+.entranceLabel {
+  color: #645ffb;
+}
+
+.exitLabel {
+  color: #fa8c10;
+}
+
+.balanceLabel,
+.balance {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #2f2f2f;
+}
+
+.balance {
+  color: #3a9ff1;
+}

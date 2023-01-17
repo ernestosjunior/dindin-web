@@ -4,7 +4,12 @@
   gap: 26px;
 }
 
-.btnFilter {
+.optionsSection {
+  display: flex;
+  gap: 32px;
+}
+
+.btnOption {
   all: unset;
   background: #fafafa;
   box-shadow: 0px 2px 11px rgba(0, 0, 0, 0.1);
@@ -19,9 +24,46 @@
   cursor: pointer;
 }
 
-.btnFilter > p {
+.btnOption > p {
   font-size: 12px;
   line-height: 14px;
   font-weight: 700;
   color: #000000;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  column-gap: 24px;
+}
+
+.main > div[class*='nextui-table-container'] {
+  flex: 1;
+}
+
+.addButton {
+  all: unset;
+  cursor: pointer;
+  background: linear-gradient(91.26deg, #fa8c10 0%, #ff57d3 97.77%);
+  border-radius: 5px;
+  min-width: 236px;
+  height: 42px;
+  color: #fff;
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  margin-top: 18px;
+}
+
+@media (max-width: 1024px) {
+  .main {
+    flex-direction: column-reverse;
+  }
+  .addButton {
+    width: 100%;
+    margin-bottom: 18px;
+  }
 }

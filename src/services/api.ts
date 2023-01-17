@@ -41,3 +41,8 @@ export const getReleases = async () => {
   const { data } = await api.get('/release')
   return data
 }
+
+export const createCategory = async (createCategoryBody: any) => {
+  const { data } = await api.post('/category', createCategoryBody)
+  return data
+}

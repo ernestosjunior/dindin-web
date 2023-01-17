@@ -8,6 +8,9 @@ import Router from 'next/router'
 type RootContextProps = {
   isAuthenticated: boolean
   signIn: (user: SignInBody) => void
+  user: any
+  container: string
+  setContainer: (key: string) => void
 }
 type RootProviderProps = { children: React.ReactNode }
 
@@ -17,6 +20,7 @@ export const RootContext = createContext<RootContextProps>(
 
 export const RootProvider = ({ children }: RootProviderProps) => {
   const [user, setUser] = useState<any>(null)
+  const [container, setContainer] = useState('home')
   const isAuthenticated = !!user
 
   useEffect(() => {
@@ -44,7 +48,9 @@ export const RootProvider = ({ children }: RootProviderProps) => {
   }
 
   return (
-    <RootContext.Provider value={{ isAuthenticated, signIn }}>
+    <RootContext.Provider
+      value={{ isAuthenticated, signIn, user, container, setContainer }}
+    >
       {children}
     </RootContext.Provider>
   )

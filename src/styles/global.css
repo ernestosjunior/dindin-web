@@ -21,3 +21,7 @@ body {
 a {
   text-decoration: none;
 }
+
+svg[class*='nextui-modal-close-icon-svg'] {
+  color: #000000;
+}

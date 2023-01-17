@@ -6,7 +6,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 32px 6% 32px 6%;
+  padding: 32px 4% 32px 4%;
 }
 
 .header > button {
@@ -18,7 +18,7 @@
 }
 
 .container {
-  padding: 55px 6% 20px 6%;
+  padding: 55px 4% 20px 4%;
   height: 100%;
   background: #ffffff;
   border-top-left-radius: 24px;

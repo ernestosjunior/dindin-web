@@ -1,0 +1,42 @@
+.top {
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.backButton,
+.addButton {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.backButton > p,
+.addButton > p {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.categoriesSection {
+  margin-top: 32px;
+  padding-bottom: 5%;
+}
+
+.categoriesSection > p {
+  font-family: 'Rubik';
+  color: #262626;
+  font-size: 24px;
+}
+
+.title {
+  margin: 32px 0;
+  font-family: 'Rubik';
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 43px;
+  color: #000000;
+  text-align: left;
+}
