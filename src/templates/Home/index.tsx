@@ -15,7 +15,11 @@ import { initialValue } from '../../utils/initialValueForm'
 
 interface HomeTemplateProps extends HomeProps {}
 
-export function HomeTemplate({ releases, categories = [] }: HomeTemplateProps) {
+export function HomeTemplate({
+  releases,
+  categories = [],
+  setReleases,
+}: HomeTemplateProps) {
   const [form, setForm] = useState(initialValue)
   const [visible, setVisible] = useState(false)
   const { isAuthenticated, setContainer } = useRoot()
@@ -24,6 +28,7 @@ export function HomeTemplate({ releases, categories = [] }: HomeTemplateProps) {
     option: category.title,
     value: category.id,
   }))
+  const optionsSelect = [{ option: 'Selecione', value: '' }, ...options]
 
   const inputs = [
     {
@@ -38,7 +43,7 @@ export function HomeTemplate({ releases, categories = [] }: HomeTemplateProps) {
       name: 'category',
       value: form.category,
       type: 'select',
-      optionsSelect: [{ option: 'Selecione', value: '' }, ...options],
+      optionsSelect,
     },
     {
       label: 'Data',

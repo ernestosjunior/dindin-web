@@ -9,15 +9,22 @@ import { useRoot } from '../hooks/useRoot'
 export interface HomeProps {
   releases: any
   categories: any
-  setCategories: any
+  setReleases: any
 }
 
 export default function Home(props: HomeProps) {
   const [categoriesState, setCategoriesState] = useState(props.categories)
+  const [releasesState, setReleasesState] = useState(props.releases)
   const { container } = useRoot()
 
   const containers = {
-    home: <HomeTemplate {...props} />,
+    home: (
+      <HomeTemplate
+        releases={releasesState}
+        setReleases={setReleasesState}
+        categories={categoriesState}
+      />
+    ),
     categories: (
       <CategoriesTemplate
         categories={categoriesState}

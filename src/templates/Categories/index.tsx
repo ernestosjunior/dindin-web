@@ -9,7 +9,9 @@ import { useRoot } from '../../hooks/useRoot'
 import { createCategory } from '../../services/api'
 import { toast } from 'react-toastify'
 
-interface CategoriesTemplateProps extends Partial<HomeProps> {}
+interface CategoriesTemplateProps extends Partial<HomeProps> {
+  setCategories: any
+}
 
 export function CategoriesTemplate({
   categories = [],
@@ -17,13 +19,14 @@ export function CategoriesTemplate({
 }: CategoriesTemplateProps) {
   const [form, setForm] = useState('')
   const [visible, setVisible] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const { isAuthenticated, user, setContainer } = useRoot()
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     try {
       setLoading(true)
-      const newCategory = createCategory({ title: form, userId: user.id })
+      const newCategory = await createCategory({ title: form, userId: user.id })
+      console.log(newCategory)
       setCategories((prev: any) => [...prev, newCategory])
       setVisible(false)
       toast.success('A nova categoria foi adicionada com sucesso!')
