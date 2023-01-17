@@ -5,11 +5,11 @@ export interface ReleaseProps {
   value: number
   categoryId: string
   userId: string
-  category: Category
+  category: ReleaseCategoryProps
   type: string
 }
 
-export interface Category {
+export interface ReleaseCategoryProps {
   id: string
   title: string
   userId: string

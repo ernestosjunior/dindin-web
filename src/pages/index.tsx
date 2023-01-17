@@ -5,11 +5,11 @@ import { HomeTemplate, CategoriesTemplate } from '../templates'
 import { useState } from 'react'
 import { GetServerSideProps } from 'next'
 import { useRoot } from '../hooks/useRoot'
-import { ReleaseProps } from '../types'
+import { ReleaseProps, CategoryProps } from '../types'
 
 export interface HomeProps {
   releases: ReleaseProps[]
-  categories: any
+  categories: CategoryProps[]
   setReleases: any
 }
 
