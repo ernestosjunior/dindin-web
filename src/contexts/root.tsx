@@ -36,7 +36,7 @@ export const RootProvider = ({ children }: RootProviderProps) => {
   const signIn = async (signInBody: SignInBody) => {
     const res = await signInRequest(signInBody)
 
-    if (!res) return toast.error('Erro ao entrar. Tente novamente!')
+    if (!res) return toast.error('Credenciais inválidas. Tente novamente!')
 
     setCookie(null, 'nextAuth.token', res.token, {
       maxAge: 60 * 60 * 8 /* Validade de 8 horas */,

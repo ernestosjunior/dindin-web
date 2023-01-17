@@ -20,6 +20,7 @@ interface RegisterModalProps {
   hideButtonsType?: boolean
   onSubmit?: () => void
   loading?: boolean
+  disabledButton?: boolean
 }
 
 export const RegisterModal = ({
@@ -32,7 +33,8 @@ export const RegisterModal = ({
   onChange,
   hideButtonsType = false,
   onSubmit,
-  loading,
+  loading = false,
+  disabledButton = false,
 }: RegisterModalProps) => {
   const [type, setType] = React.useState(registerType)
 
@@ -75,7 +77,12 @@ export const RegisterModal = ({
             <Input key={props.name} {...props} onChange={onChange} />
           ))}
         </div>
-        <Button isLoading={loading} label="Confirmar" onClick={onSubmit} />
+        <Button
+          isLoading={loading}
+          label="Confirmar"
+          onClick={onSubmit}
+          disabled={disabledButton}
+        />
       </section>
     </Modal>
   )

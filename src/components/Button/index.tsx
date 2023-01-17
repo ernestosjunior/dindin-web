@@ -5,14 +5,20 @@ export interface ButtonProps {
   isLoading?: boolean
   label: string
   onClick: any
+  disabled: boolean
 }
 
-export const Button = ({ isLoading, label, onClick }: ButtonProps) => {
+export const Button = ({
+  isLoading,
+  label,
+  onClick,
+  disabled,
+}: ButtonProps) => {
   return (
     <button
       className={styles.buttonContainer}
       onClick={onClick}
-      disabled={isLoading}
+      disabled={isLoading || disabled}
     >
       {!isLoading ? (
         label

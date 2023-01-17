@@ -54,6 +54,7 @@ export function CategoriesTemplate({
         inputs={inputs}
         onSubmit={handleSubmit}
         loading={loading}
+        disabledButton={!form}
       />
       <BaseLayout hasLogoutButton={isAuthenticated}>
         <div className={styles.top}>

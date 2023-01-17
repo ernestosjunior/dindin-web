@@ -38,6 +38,7 @@ export const Input = ({
     <label className={styles.label}>
       {label}
       <input
+        autoComplete="no"
         className={styles.input}
         type={type}
         onChange={onChange}

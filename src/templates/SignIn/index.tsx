@@ -1,18 +1,30 @@
 import { useState } from 'react'
-import { BaseLayout, Modal, Input } from '../../components'
+import { BaseLayout, Modal, Input, Button } from '../../components'
 import styles from './styles.module.css'
 import { useRoot } from '../../hooks/useRoot'
 import Link from 'next/link'
+import { toast } from 'react-toastify'
 
 const initialState = { email: '', password: '' }
 
 export const SignInTemplate = () => {
   const { signIn } = useRoot()
   const [form, setForm] = useState(initialState)
+  const [loading, setLoading] = useState(false)
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setForm({ ...form, [name]: value })
+  }
+
+  const handleSignIn = async () => {
+    try {
+      setLoading(true)
+      signIn(form)
+    } catch (error) {
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -29,12 +41,12 @@ export const SignInTemplate = () => {
               type="password"
             />
           </div>
-          <button
-            onClick={() => signIn(form)}
+          <Button
+            isLoading={loading}
+            label="Entrar"
             disabled={!form.email || !form.password}
-          >
-            Entrar
-          </button>
+            onClick={handleSignIn}
+          />
           <Link className={styles.redirectButton} href="/signup">
             Cadastre-se
           </Link>
