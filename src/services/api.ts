@@ -44,5 +44,6 @@ export const getReleases = async () => {
 
 export const createCategory = async (createCategoryBody: any) => {
   const { data } = await api.post('/category', createCategoryBody)
+  if (!data) return toast.error('Erro ao cadastrar categoria. Tente novamente!')
   return data
 }

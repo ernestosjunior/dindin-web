@@ -23,14 +23,14 @@ export function CategoriesTemplate({
   const handleSubmit = () => {
     try {
       setLoading(true)
-      createCategory({ title: form, userId: user.id })
-      setCategories((prev: any) => [...prev, { title: form }])
-      setForm('')
+      const newCategory = createCategory({ title: form, userId: user.id })
+      setCategories((prev: any) => [...prev, newCategory])
       setVisible(false)
       toast.success('A nova categoria foi adicionada com sucesso!')
     } catch (error) {
       toast.error('Erro ao adicionar sua categoria. Tente novamente!')
     } finally {
+      setForm('')
       setLoading(false)
     }
   }
