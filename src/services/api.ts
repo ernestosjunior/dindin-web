@@ -44,7 +44,7 @@ export const getReleases = async () => {
 }
 
 export const createCategory = async (createCategoryBody: any) => {
-  const { data } = await api.post('/category', createCategoryBody)
+  const { data } = await getAPIClient().post('/category', createCategoryBody)
   if (!data) return toast.error('Erro ao cadastrar categoria. Tente novamente!')
   return data
 }
@@ -55,7 +55,7 @@ export const createRelease = async (createReleaseBody: any) => {
   }
   form.categoryId = createReleaseBody.category
   form.date = generateDate(createReleaseBody.date)
-  const { data } = await api.post('/release', form)
+  const { data } = await getAPIClient().post('/release', form)
   if (!data) return toast.error('Erro ao cadastrar categoria. Tente novamente!')
   return data
 }
