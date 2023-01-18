@@ -5,7 +5,7 @@ import { SignUpBody, SignInBody } from './types'
 import { parseCookies } from 'nookies'
 
 export const api = axios.create({
-  baseURL: 'http://localhost:3333',
+  baseURL: 'https://dindin-api-mmoh.onrender.com',
 })
 
 export function getAPIClient(ctx?: any) {
