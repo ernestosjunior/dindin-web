@@ -3,7 +3,6 @@ import { BaseLayout, Modal, Input, Button } from '../../components'
 import styles from './styles.module.css'
 import { useRoot } from '../../hooks/useRoot'
 import Link from 'next/link'
-import { toast } from 'react-toastify'
 
 const initialState = { email: '', password: '' }
 

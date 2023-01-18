@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BaseLayout, Modal, Input } from '../../components'
+import { BaseLayout, Modal, Input, Button } from '../../components'
 import { handleSignUp } from '../../services/api'
 import Router from 'next/router'
 import styles from './styles.module.css'
@@ -9,10 +9,22 @@ const initialState = { name: '', email: '', password: '' }
 
 export const SignUpTemplate = () => {
   const [form, setForm] = useState(initialState)
+  const [loading, setLoading] = useState(false)
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     setForm({ ...form, [name]: value })
+  }
+
+  const handleSubmit = async () => {
+    try {
+      setLoading(true)
+      await handleSignUp(form)
+      Router.push('/signin')
+    } catch (error) {
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -25,15 +37,12 @@ export const SignUpTemplate = () => {
             <Input label="Email" onChange={onChange} name="email" />
             <Input label="Senha" onChange={onChange} name="password" />
           </div>
-          <button
-            onClick={() => {
-              handleSignUp(form)
-              Router.push('/signin')
-            }}
+          <Button
+            onClick={handleSubmit}
+            label="Cadastrar"
             disabled={!form.email || !form.password || !form.name}
-          >
-            Cadastrar
-          </button>
+            isLoading={loading}
+          />
           <Link className={styles.redirectButton} href="/signin">
             Login
           </Link>
